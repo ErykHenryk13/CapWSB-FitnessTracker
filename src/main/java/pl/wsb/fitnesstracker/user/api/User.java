@@ -1,21 +1,17 @@
 package pl.wsb.fitnesstracker.user.api;
 
+import java.time.LocalDate;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.time.LocalDate;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
-@Getter
+@Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString
-public class User {
 
+public class User
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Nullable
@@ -33,17 +29,11 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    public User(
-            final String firstName,
-            final String lastName,
-            final LocalDate birthdate,
-            final String email) {
-
+    public User(String firstName, String lastName, LocalDate birthdate, String email)
+    {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
         this.email = email;
     }
-
 }
-
